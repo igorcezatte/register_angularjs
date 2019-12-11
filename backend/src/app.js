@@ -1,5 +1,8 @@
 const express = require('express');
+const cors = require('cors');
 const routes = require('./routes');
+
+require('./database');
 
 class App {
   constructor() {
@@ -10,6 +13,7 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
   }
 

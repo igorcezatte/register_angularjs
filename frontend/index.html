@@ -1,0 +1,161 @@
+<html ng-app="register">
+  <head>
+    <title>Usuários</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script src="lib/angular.min.js"></script>
+    <script src="registerController.js"></script>
+  </head>
+  <body ng-controller="registerController">
+    <div id="container">
+      <form id="registerForm" name="registerForm">
+        <h1>Cadastro:</h1>
+        <label>*Nome:</label>
+        <input ng-model="name" placeholder="Nome" required />
+        <label>*Genero:</label>
+        <select ng-model="gender" required>
+          <option></option>
+          <option>Masculino</option>
+          <option>Feminino</option>
+        </select>
+        <label>*Email:</label>
+        <input ng-model="email" placeholder="Email" required />
+        <label>*CPF:</label>
+        <input ng-model="cpf" placeholder="CPF" required />
+        <label
+          >Endereço Residencial
+          <input
+            id="residencialCheckBox"
+            type="checkbox"
+            ng-model="residencialChecked"
+          />
+          <div ng-show="residencialChecked" class="ng-hide">
+            <input ng-model="cep_residencial" placeholder="Cep" />
+            <button
+              id="buttonForm"
+              type="button"
+              ng-click="searchCepResidencial()"
+            >
+              Buscar
+            </button>
+            <div>
+              {{cepRes.logradouro ? "Logradouro: " + cepRes.logradouro : null }}
+            </div>
+            <div>{{cepRes.bairro ? "Bairro: " + cepRes.bairro : null}}</div>
+            <div>
+              {{cepRes.localidade ? "Cidade: " + cepRes.localidade : null}}
+            </div>
+            <div>{{cepRes.uf ? "Estado: " + cepRes.uf : null}}</div>
+            <div>
+              {{cepResNotExist.status == -1 || cepResInvalid ? "Cep inválido" :
+              null}}
+            </div>
+          </div>
+        </label>
+        <label
+          >Endereço Comercial
+          <input
+            id="comercialCheckBox"
+            type="checkbox"
+            ng-model="comercialChecked"
+          />
+          <div ng-show="comercialChecked" class="ng-hide">
+            <input ng-model="cep_comercial" placeholder="Cep" />
+            <button
+              id="buttonForm"
+              type="button"
+              ng-click="searchCepComercial()"
+            >
+              Buscar
+            </button>
+            <div>
+              {{cepCom.logradouro ? "Logradouro: " + cepCom.logradouro : null }}
+            </div>
+            <div>{{cepCom.bairro ? "Bairro: " + cepCom.bairro : null}}</div>
+            <div>
+              {{cepCom.localidade ? "Cidade: " + cepCom.localidade : null}}
+            </div>
+            <div>{{cepCom.uf ? "Estado: " + cepCom.uf : null}}</div>
+            <div>
+              {{cepComNotExist.status == -1 || cepComInvalid ? "Cep inválido" :
+              null}}
+            </div>
+          </div>
+        </label>
+        <label>*Data de nascimento:</label>
+        <input type="date" ng-model="birth_date" required />
+        <label>Telefone:</label>
+        <input ng-model="phone" placeholder="Telefone" />
+        <label>Celular:</label>
+        <input ng-model="cell_phone" placeholder="Celular" />
+        <button
+          id="buttonForm"
+          ng-click="createNewUser()"
+          ng-disabled="registerForm.$invalid"
+        >
+          Cadastrar usuário
+        </button>
+      </form>
+      <div id="listOneUser">
+        <h1>Buscar usuário:</h1>
+        Email:
+        <input ng-model="fEmail" />
+        <button id="buttonSearchUser" type="button" ng-click="getUser()">
+          Buscar
+        </button>
+        <label>{{dataUser.name ? "Nome: " + dataUser.name : null}}</label>
+        <label>{{dataUser.gender ? "Gênero: " + dataUser.gender : null}}</label>
+        <label>{{dataUser.email ? "Email: " + dataUser.email : null}}</label>
+        <label>{{dataUser.cpf ? "CPF: " + dataUser.cpf : null}}</label>
+        <label
+          >{{dataUser.cep_residencial ? "CEP Residencial: " +
+          dataUser.cep_residencial : null}}</label
+        >
+        <label
+          >{{dataUser.cep_comercial ? "CEP Comercial: " + dataUser.cep_comercial
+          : null}}</label
+        >
+        <label
+          >{{dataUser.birth_date ? "Data de nascimento: " + (dataUser.birth_date
+          | date:'dd-MM-yyyy') : null}}</label
+        >
+        <label>{{dataUser.phone ? "Telefone: " + dataUser.phone : null}}</label>
+        <label id="lastLabel"
+          >{{dataUser.cell_phone ? "Celular: " + dataUser.cell_phone :
+          null}}</label
+        >
+      </div>
+    </div>
+    <div id="listAllUsers">
+      Todos usuários cadastrados:
+      <button id="buttonListAllUsers" type="button" ng-click="getList()">
+        Listar
+      </button>
+      <table>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+        </tr>
+        <tr ng-repeat="user in users">
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+        </tr>
+      </table>
+
+      <button
+        id="nextButton"
+        ng-click="previousPage()"
+        ng-disabled="disablePrevious"
+      >
+        <
+      </button>
+      <button
+        id="previousButton"
+        ng-click="nextPage()"
+        ng-disabled="disableNext"
+      >
+        >
+      </button>
+    </div>
+  </body>
+</html>

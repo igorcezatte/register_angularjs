@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+body {
+  background: #3287a8;
+  font-family: Roboto;
+}
+
+#container {
+  display: flex;
+}
+
+#registerForm {
+  background: #eeee;
+  border-radius: 10px;
+  width: 500px;
+  margin: auto;
+  border: solid 3px;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0px;
+  font-size: 30px;
+}
+
+input,
+label,
+select {
+  margin: auto;
+  text-align: center;
+  width: 300px;
+  display: block;
+  margin-top: 10px;
+}
+
+#comercialCheckBox {
+  width: auto;
+  display: inline-block;
+  margin: 0px;
+  text-align: center;
+}
+
+#residencialCheckBox {
+  width: auto;
+  display: inline-block;
+  margin: 0px;
+  text-align: center;
+}
+
+#buttonForm {
+  margin: auto;
+  text-align: center;
+  width: 300px;
+  display: block;
+  margin-top: 10px;
+}
+
+#listOneUser {
+  background: #eeee;
+  width: 500px;
+  border: 3px solid;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+}
+
+#listAllUsers {
+  border: 3px solid;
+  border-radius: 10px;
+  background: #eeee;
+  width: 600px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#lastLabel {
+  margin-bottom: 15px;
+}
+
+#buttonListAllUsers {
+  width: 200px;
+  font-size: 15px;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#buttonSearchUser {
+  width: 100px;
+  margin: 10px;
+}
+
+table {
+  margin: auto;
+  margin-bottom: 5px;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+td,
+th {
+  height: 30px;
+  width: 250px;
+  text-align: center;
+}
+
+#nextButton {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#previousButton {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
