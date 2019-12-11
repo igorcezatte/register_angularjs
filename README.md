@@ -13,7 +13,7 @@ Na pasta "/backend" executar o comando:
 
 "yarn"
 
-### 2 - Criar imagem do postgres no Docker com nome adsoft e senha docker. 
+### 2 - Criar e rodar imagem do postgres no Docker com nome adsoft e senha docker. 
 
 Executar no console o comando: 
 
